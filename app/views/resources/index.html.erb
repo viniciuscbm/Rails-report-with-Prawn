@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Initial</th>
+      <th>Deadline</th>
+      <th>Relatórios</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+    <tr>
+      <td><%= resource.name %></td>
+      <td><%= resource.initial.to_date %></td>
+      <td><%= resource.deadline.to_date %></td>
+      <td>
+        <%= link_to  resource_path(resource, format: :pdf), target: '_blank' do %>
+        <button type="button">Relatório</button>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource', new_resource_path %>
